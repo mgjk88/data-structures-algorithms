@@ -2,24 +2,24 @@
 #include <functional>
 #include <iostream>
 
-int hoare(std::vector<int> *v, int leftIdx, int rightIdx){  
+int hoare(std::vector<int> &v, int leftIdx, int rightIdx){  
     int pivotIdx = leftIdx;
-    int pivot = (*v)[leftIdx];
+    int pivot = v[leftIdx];
     leftIdx++;
     while(leftIdx <= rightIdx){
-        while((*v)[leftIdx] < pivot) leftIdx++;
-        while((*v)[rightIdx] > pivot) rightIdx--;
+        while(v[leftIdx] < pivot) leftIdx++;
+        while(v[rightIdx] > pivot) rightIdx--;
         if(leftIdx < rightIdx){
-            std::swap((*v)[leftIdx], (*v)[rightIdx]);
+            std::swap(v[leftIdx], v[rightIdx]);
             leftIdx++;
             rightIdx--;
         }
     }
-    std::swap((*v)[rightIdx], (*v)[pivotIdx]);
+    std::swap(v[rightIdx], v[pivotIdx]);
     return rightIdx;
 }
 
-void quicksort(std::vector<int> *v, int leftIdx, int rightIdx, std::function<int(std::vector<int>*, int, int)> partition){
+void quicksort(std::vector<int> &v, int leftIdx, int rightIdx, std::function<int(std::vector<int>&, int, int)> partition){
     if(leftIdx >= rightIdx) return;
     int partitionIdx = partition(v, leftIdx, rightIdx);
     quicksort(v, leftIdx, partitionIdx - 1, partition);
@@ -32,8 +32,7 @@ int main() {
         std::cout<<i<<' ';
     }
     std::cout<<'\n';
-    std::vector<int>* ptr = &v;
-    quicksort(ptr, 0, v.size() - 1, hoare);
+    quicksort(v, 0, v.size() - 1, hoare);
     for(auto i : v){
         std::cout<<i<<' ';
     }
