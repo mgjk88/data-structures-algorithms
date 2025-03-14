@@ -72,7 +72,7 @@ public:
             list[endV][startV] = weight;
     }
 
-    void deleteEdge(std::string startV, std::string endV)
+    void deleteEdge(std::string startV, std::string endV, bool isDirected)
     {
         if (list.find(startV) != list.end())
         {
@@ -81,6 +81,9 @@ public:
         else
         {
             throw "start vertex does not exist";
+        }
+        if (!isDirected && list.find(endV) != list.end()){
+            list[endV].erase(startV);
         }
     }
 
