@@ -1,3 +1,5 @@
+//Time complexity: O(log(n))
+//Space complexity: O(1)
 #include <vector>
 #include <iostream>
 #include <chrono>
