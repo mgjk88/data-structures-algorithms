@@ -4,6 +4,8 @@
 #include <stack>
 #include <unordered_set>
 
+//Time complexity: O(V+E)
+//Space complexity: O(V)
 //one use of dfs is for cycle detection in a graph
 bool cycleDetection(std::unordered_map<std::string, std::unordered_map<std::string, int>>* ptr, std::string startNode){
     std::unordered_map<std::string, std::unordered_map<std::string, int>> list = *ptr;
