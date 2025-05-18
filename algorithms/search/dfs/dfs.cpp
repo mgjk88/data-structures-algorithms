@@ -7,8 +7,8 @@
 //Time complexity: O(V+E)
 //Space complexity: O(V)
 //one use of dfs is for cycle detection in a graph
-bool cycleDetection(std::unordered_map<std::string, std::unordered_map<std::string, int>>* ptr, std::string startNode){
-    std::unordered_map<std::string, std::unordered_map<std::string, int>> list = *ptr;
+bool cycleDetection(adjList* ptr, std::string startNode){
+    adjList list = *ptr;
     std::unordered_set<std::string> visited;
     std::stack<std::string> stack; //stack is used to determine order nodes are checked 
     stack.push(startNode);
