@@ -12,13 +12,16 @@
 //- x represents start vertex
 //- y represents end vertex
 
+typedef std::vector<std::vector<int>> adjMatrix;
+typedef std::unordered_map<std::string, std::unordered_map<std::string, int>> adjList;
+
 class matrixGraph
 {
 private:
     int numVertex;
 
 public:
-    std::vector<std::vector<int>> matrix;
+    adjMatrix matrix;
 
     matrixGraph(int n) : numVertex(n), matrix(n, std::vector<int>(n, 0)) {}
 
@@ -50,7 +53,7 @@ public:
         matrix.resize(numVertex, std::vector<int>(numVertex, 0));
     }
 
-    std::vector<std::vector<int>> *const getMatrix()
+    adjMatrix *const getMatrix()
     {
         return &matrix;
     }
@@ -62,7 +65,7 @@ class listGraph
 {
 private:
 public:
-    std::unordered_map<std::string, std::unordered_map<std::string, int>> list;
+    adjList list;
     listGraph() {}
 
     void createEdge(std::string startV, std::string endV, int weight, bool isDirected)
@@ -87,11 +90,8 @@ public:
         }
     }
 
-    std::unordered_map<std::string, std::unordered_map<std::string, int>> *const getList()
+    adjList *const getList()
     {
         return &list;
     }
 };
-
-int main()
-{}
